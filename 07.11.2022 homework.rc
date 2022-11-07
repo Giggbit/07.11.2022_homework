@@ -1,0 +1,146 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Русский (Россия) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOGEX 0, 0, 412, 224
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Тест на IQ"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Какого цвета Молния Макуин ?",IDC_STATIC,14,32,113,55
+    CONTROL         "Синего",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON,20,48,39,10
+    CONTROL         "Белого",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,20,59,39,10
+    CONTROL         "Красного",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,20,70,46,10
+    GROUPBOX        "Кто друг Молнии Макуина ?",IDC_STATIC,14,94,113,55,WS_GROUP
+    CONTROL         "Сквидвард",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON | WS_GROUP,20,110,51,10
+    CONTROL         "Мэтр",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,20,121,32,10
+    CONTROL         "Чико Хикс",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,20,132,49,10
+    GROUPBOX        "",IDC_STATIC,137,32,113,55
+    CONTROL         "Молния Макуин",IDC_RADIO7,"Button",BS_AUTORADIOBUTTON | WS_GROUP,143,48,67,10
+    CONTROL         "Радиатор Спрингс",IDC_RADIO8,"Button",BS_AUTORADIOBUTTON,143,59,76,10
+    CONTROL         "Кинг",IDC_RADIO9,"Button",BS_AUTORADIOBUTTON,143,70,32,10
+    GROUPBOX        "Кто такой Гвидо ?",IDC_STATIC,137,94,113,55
+    CONTROL         "Эвакуатор",IDC_RADIO10,"Button",BS_AUTORADIOBUTTON | WS_GROUP,143,110,50,10
+    CONTROL         "Судья",IDC_RADIO11,"Button",BS_AUTORADIOBUTTON,143,121,35,10
+    CONTROL         "Шиномантажник",IDC_RADIO12,"Button",BS_AUTORADIOBUTTON,143,132,70,10
+    LTEXT           "Как зовут снию гоночную машину ?",IDC_STATIC,136,32,118,8
+    GROUPBOX        "",IDC_STATIC,14,156,113,55
+    CONTROL         "95",IDC_RADIO13,"Button",BS_AUTORADIOBUTTON | WS_GROUP,20,172,24,10
+    CONTROL         "92",IDC_RADIO14,"Button",BS_AUTORADIOBUTTON,20,183,24,10
+    CONTROL         "69",IDC_RADIO15,"Button",BS_AUTORADIOBUTTON,20,194,24,10
+    GROUPBOX        "Кто такой Рамон ?",IDC_STATIC,137,156,113,55,WS_GROUP
+    CONTROL         "Хиппи с бутылкой без воды",IDC_RADIO16,"Button",BS_AUTORADIOBUTTON | WS_GROUP,143,172,107,10
+    CONTROL         "Большой любитель тюнинга",IDC_RADIO17,"Button",BS_AUTORADIOBUTTON,143,183,109,10
+    CONTROL         "Врач с красным дипломом",IDC_RADIO18,"Button",BS_AUTORADIOBUTTON,143,194,102,10
+    LTEXT           "Какой номер у Молнии Макуина ?",IDC_STATIC,15,156,112,8
+    LTEXT           "Тест на мультфильм Тачки",IDC_STATIC,35,12,132,8
+    GROUPBOX        "Какой цвет на картинке ?",IDC_STATIC,268,15,123,65
+    CONTROL         IDB_BITMAP1,IDC_STATIC,"Static",SS_BITMAP,347,40,21,20
+    CONTROL         "Синий",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,274,29,36,10
+    CONTROL         "Желтый",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,274,53,42,10
+    CONTROL         "Зеленый",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,274,65,44,10
+    CONTROL         "Красный",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,274,41,44,10
+    PUSHBUTTON      "Finish test",IDC_BUTTON1,292,183,71,25
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 405
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 217
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG1 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "bitmap1.bmp"
+
+#endif    // Русский (Россия) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
