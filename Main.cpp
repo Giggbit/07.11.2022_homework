@@ -4,11 +4,17 @@
 
 BOOL CALLBACK DlgProc(HWND, UINT, WPARAM, LPARAM);
 
-HWND hButton;
+HWND hButton, hEdit1, hEdit2;
 int TrueAnswer = 0, MaxAnswer = 8;
 
 TCHAR str[50];
 TCHAR percent[] = TEXT("%");
+TCHAR idok1[50];
+TCHAR idok2[50];
+
+TCHAR CorrectBoxAnswer1[] = TEXT("Молния Макуин");
+TCHAR CorrectBoxAnswer2[] = TEXT("Тачки");
+
 
 int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPTSTR lpszCmdLine, int nCmdShow)
 {
@@ -30,6 +36,8 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		SendDlgItemMessage(hWnd, IDC_CHECK2, BM_SETCHECK, WPARAM(BST_UNCHECKED), 0);
 
 		hButton = GetDlgItem(hWnd, IDC_BUTTON1);
+		hEdit1 = GetDlgItem(hWnd, IDC_EDIT1);
+		hEdit2 = GetDlgItem(hWnd, IDC_EDIT2);
 	}
 	return TRUE;
 
@@ -69,7 +77,32 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		if (LOWORD(wParam) == IDC_CHECK3 || LOWORD(wParam) ==  IDC_CHECK4) {
 			TrueAnswer--;
 		}
-		
+		if (LOWORD(wParam) == IDOK1) {
+			int size1 = GetWindowTextLength(hEdit1);
+			GetWindowText(hEdit1, idok1, size1 + 1);
+			if (idok1 == CorrectBoxAnswer1) {
+				TrueAnswer++;
+			}
+			else if (idok1 == NULL) {
+				TrueAnswer--;
+			}
+			else if (idok1 != CorrectBoxAnswer1) {
+				TrueAnswer--;
+			}
+		}
+		if (LOWORD(wParam) == IDOK2) {
+			int size2 = GetWindowTextLength(hEdit2);
+			GetWindowText(hEdit2, idok2, size2 + 1);
+			if (idok2 == CorrectBoxAnswer2) {
+				TrueAnswer++;
+			}
+			else if (idok2 == NULL) {
+				TrueAnswer--;
+			}
+			else if(idok2 != CorrectBoxAnswer2) {
+				TrueAnswer--;
+			}
+		}
 
 		if (LOWORD(wParam) == IDC_BUTTON1) {
 			TrueAnswer = (double(TrueAnswer) / MaxAnswer) * 100;
