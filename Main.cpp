@@ -1,10 +1,12 @@
 #include <windows.h>
 #include <tchar.h>
+#include <commctrl.h>
+#include <windowsX.h>
 #include "resource.h"
 
 BOOL CALLBACK DlgProc(HWND, UINT, WPARAM, LPARAM);
 
-HWND hButton, hEdit1, hEdit2;
+HWND hButton, hEdit1, hEdit2, hProgress;
 int TrueAnswer = 0, MaxAnswer = 8;
 
 TCHAR str[50];
@@ -15,10 +17,18 @@ TCHAR idok2[50];
 TCHAR CorrectBoxAnswer1[] = TEXT("Молния Макуин");
 TCHAR CorrectBoxAnswer2[] = TEXT("Тачки");
 
+WPARAM iProgessPosition = 0;
+DWORD IDC_TIMER;
+
 
 int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPTSTR lpszCmdLine, int nCmdShow)
 {
 	return DialogBox(hInstance, MAKEINTRESOURCE(IDD_DIALOG1), NULL, (DLGPROC)DlgProc);
+}
+
+void Cls_OnTimer(HWND hWnd, UINT id)
+{
+	SendMessage(hProgress, PBM_STEPIT, 0, 0);
 }
 
 BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -38,6 +48,11 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		hButton = GetDlgItem(hWnd, IDC_BUTTON1);
 		hEdit1 = GetDlgItem(hWnd, IDC_EDIT1);
 		hEdit2 = GetDlgItem(hWnd, IDC_EDIT2);
+		hProgress = GetDlgItem(hWnd, IDC_PROGRESS1); 
+
+		SendMessage(hProgress, PBM_SETRANGE, 0, MAKELPARAM(0, 100));
+		SendMessage(hProgress, PBM_SETSTEP, 10, 0);
+		SendMessage(hProgress, PBM_SETPOS, 0, 0);
 	}
 	return TRUE;
 
@@ -103,18 +118,30 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				TrueAnswer--;
 			}
 		}
-
 		if (LOWORD(wParam) == IDC_BUTTON1) {
 			TrueAnswer = (double(TrueAnswer) / MaxAnswer) * 100;
 			wsprintf(str, TEXT("Ваш результат = %d %hs"), TrueAnswer, percent);
-			MessageBox(hWnd, str, TEXT("Result"), MB_OK);
-			EndDialog(hWnd, 0);
+			SetTimer(hWnd, IDC_TIMER, 250, NULL);
+			if (iProgessPosition == 10) {
+				MessageBox(hWnd, str, TEXT("Result"), MB_OK);
+				EndDialog(hWnd, 0);
+			}
+			
 		}
 	}
 	return TRUE;
-					
+	
+	case WM_TIMER: {
+		iProgessPosition++;
+		SendMessage(hProgress, PBM_STEPIT, 0, 0);
+		if (iProgessPosition == 10) {
+			KillTimer(hWnd, IDC_TIMER);
+		}
+	}
+	break;
+
 	case WM_CLOSE:
-		EndDialog(hWnd, 0); // закрываем модальный диалог
+		EndDialog(hWnd, 0);
 		return TRUE;
 	}
 	return FALSE;
