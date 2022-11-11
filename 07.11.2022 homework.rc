@@ -50,7 +50,7 @@ END
 // Dialog
 //
 
-IDD_DIALOG1 DIALOGEX 0, 0, 412, 256
+IDD_DIALOG1 DIALOGEX 0, 0, 412, 264
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Тест на IQ"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
@@ -117,7 +117,7 @@ BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 405
         TOPMARGIN, 7
-        BOTTOMMARGIN, 249
+        BOTTOMMARGIN, 257
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -186,6 +186,20 @@ END
 //
 
 IDB_BITMAP1             BITMAP                  "bitmap1.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU
+BEGIN
+    POPUP "Menu"
+    BEGIN
+        MENUITEM "Exit",                        ID_MENU_EXIT
+    END
+END
 
 #endif    // Русский (Россия) resources
 /////////////////////////////////////////////////////////////////////////////

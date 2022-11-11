@@ -7,13 +7,14 @@
 BOOL CALLBACK DlgProc(HWND, UINT, WPARAM, LPARAM);
 
 HWND hButton, hEdit1, hEdit2, hProgress;
+HMENU hMenu;
+
 int TrueAnswer = 0, MaxAnswer = 8;
 
 TCHAR str[50];
 TCHAR percent[] = TEXT("%");
 TCHAR idok1[50];
 TCHAR idok2[50];
-
 TCHAR CorrectBoxAnswer1[] = TEXT("Молния Макуин");
 TCHAR CorrectBoxAnswer2[] = TEXT("Тачки");
 
@@ -49,6 +50,8 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		hEdit1 = GetDlgItem(hWnd, IDC_EDIT1);
 		hEdit2 = GetDlgItem(hWnd, IDC_EDIT2);
 		hProgress = GetDlgItem(hWnd, IDC_PROGRESS1); 
+		hMenu = LoadMenu(GetModuleHandle(NULL), MAKEINTRESOURCE(IDR_MENU1));
+		SetMenu(hWnd, hMenu);
 
 		SendMessage(hProgress, PBM_SETRANGE, 0, MAKELPARAM(0, 100));
 		SendMessage(hProgress, PBM_SETSTEP, 10, 0);
@@ -121,24 +124,24 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		if (LOWORD(wParam) == IDC_BUTTON1) {
 			TrueAnswer = (double(TrueAnswer) / MaxAnswer) * 100;
 			wsprintf(str, TEXT("Ваш результат = %d %hs"), TrueAnswer, percent);
-			SetTimer(hWnd, IDC_TIMER, 250, NULL);
-			if (iProgessPosition == 10) {
-				MessageBox(hWnd, str, TEXT("Result"), MB_OK);
-				EndDialog(hWnd, 0);
-			}
-			
+			SendMessage(hProgress, PBM_SETPOS, WPARAM(TrueAnswer), 0);
+			EndDialog(hWnd, 0);
+		}
+		if (LOWORD(wParam) == ID_MENU_EXIT) {
+			EndDialog(hWnd, 0);
 		}
 	}
 	return TRUE;
 	
-	case WM_TIMER: {
+	/*case WM_TIMER: {
 		iProgessPosition++;
 		SendMessage(hProgress, PBM_STEPIT, 0, 0);
 		if (iProgessPosition == 10) {
+			MessageBox(hWnd, str, TEXT("Result"), MB_OK);
 			KillTimer(hWnd, IDC_TIMER);
 		}
 	}
-	break;
+	break;*/
 
 	case WM_CLOSE:
 		EndDialog(hWnd, 0);
